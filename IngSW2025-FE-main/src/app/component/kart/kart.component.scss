@@ -1,0 +1,141 @@
+.main-kart {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+  padding: 30px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #2c3e50;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 0;
+    }
+
+    .user-icon {
+      font-size: 1.8rem;
+      background: white;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: rotate(15deg) scale(1.1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      }
+    }
+    .home-icon {
+      font-size: 1.8rem;
+      background: white;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        color: #3498db;  /* Diventa azzurro quando ci passi sopra */
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .book-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 60px; // Mantiene lo stile a pillola del tuo disegno
+    padding: 12px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid #e0e0e0;
+
+    &:hover {
+      transform: translateX(10px); // Leggero scivolamento a destra al passaggio del mouse
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+      border-color: #3498db;
+    }
+
+    .cover-circle {
+      width: 55px;
+      height: 55px;
+      background: #34495e;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .book-info {
+      flex-grow: 1;
+      padding: 0 25px;
+      color: #34495e;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .book-title {
+        font-weight: 700;
+        color: #2c3e50;
+      }
+
+      .divider {
+        color: #3498db;
+        font-weight: bold;
+      }
+
+      .book-details {
+        color: #7f8c8d;
+        font-weight: 400;
+      }
+    }
+
+    .status-circle {
+      width: 45px;
+      height: 45px;
+      border: 2px dashed #3498db;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #3498db;
+      background: #ebf5fb;
+    }
+  }
+}

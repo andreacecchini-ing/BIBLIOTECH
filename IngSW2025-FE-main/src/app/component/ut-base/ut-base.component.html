@@ -1,0 +1,23 @@
+<div class="main-container">
+  <header>
+    <div class="home-icon" (click)="goToHome()">🏠</div>
+    <h1>BIBLIOTECH</h1>
+    <div class="kart-icon" (click)="goToKart()">🛒</div>
+  </header>
+
+  <div class="book-list">
+    <div class="book-card" *ngFor="let libro of listaLibri">
+      <div class="cover-circle">Cover</div>
+      
+      <div class="book-info"><!--(click)="goToDetails(libro.id)"-->
+        <span class="book-title">{{ libro.titolo }}</span>
+        <span class="divider">•</span>
+        <span class="book-details">
+          {{ libro.autore }} — {{ libro.anno }} — {{ libro.genere }}
+        </span>
+      </div>
+
+      <div class="status-circle">OK</div>
+    </div>
+  </div>
+</div>

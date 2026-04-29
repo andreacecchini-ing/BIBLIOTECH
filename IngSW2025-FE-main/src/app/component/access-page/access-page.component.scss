@@ -1,0 +1,99 @@
+.access-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../images/BlurredImage.jpg');
+  // Proprietà fondamentali per uno sfondo perfetto:
+  background-size: cover;      // Copre tutto lo spazio senza deformarsi
+  background-position: center; // Centra l'immagine
+  background-repeat: no-repeat; // Evita che l'immagine si ripeta a "piastrella"
+  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+
+    h1 { color: #2c3e50; margin-bottom: 5px; letter-spacing: 2px; }
+    .subtitle { color: #7f8c8d; margin-bottom: 30px; font-size: 0.9rem; }
+
+    .home-icon {
+      font-size: 1.4rem;
+      background: white;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.5s ease;
+
+      &:hover {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        color: #3498db;  /* Diventa azzurro quando ci passi sopra */
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-weight: bold;
+      color: #bdc3c7;
+      transition: 0.3s;
+
+      &.active { color: #3498db; border-bottom: 2px solid #3498db; }
+    }
+  }
+
+  .access-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      label { font-size: 0.85rem; font-weight: bold; color: #34495e; }
+      input {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        &:focus { border-color: #3498db; }
+      }
+    }
+
+    .btn-primary {
+      background: #3498db;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+      &:hover { background: #2980b9; }
+    }
+  }
+}

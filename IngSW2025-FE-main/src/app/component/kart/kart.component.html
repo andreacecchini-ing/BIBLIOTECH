@@ -1,0 +1,22 @@
+<div class="main-kart">
+  <header>
+    <div class="home-icon" (click)="goToUtBase()"><--</div>
+    <h1>CARRELLO</h1>
+  </header>
+
+  <div class="book-list">
+    <div class="book-card" *ngFor="let libro of listaLibri">
+      <div class="cover-circle">Cover</div>
+      
+      <div class="book-info">
+        <span class="book-title">{{ libro.titolo }}</span>
+        <span class="divider">•</span>
+        <span class="book-details">
+          {{ libro.autore }} — {{ libro.anno }} — {{ libro.genere }}
+        </span>
+      </div>
+
+      <div class="status-circle">OK</div>
+    </div>
+  </div>
+</div>

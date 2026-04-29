@@ -1,0 +1,52 @@
+<div class="access-container">
+  <div class="glass-card">
+    <div class="home-icon" (click)="goToHome()">🏠</div>
+    <h1>BIBLIOTECH</h1>
+    <p class="subtitle">Gestisci la tua lettura</p>
+
+    <div class="tabs">
+      <button (click)="mode = 'login'" [class.active]="mode === 'login'">Accedi</button>
+      <button (click)="mode = 'register'" [class.active]="mode === 'register'">Registrati</button>
+    </div>
+
+    <form *ngIf="mode === 'login'" class="access-form">
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" placeholder="Inserisci la tua email" [(ngModel)]="nuovoUtente.email">
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" [(ngModel)]="nuovoUtente.password">
+      </div>
+      <button type="button" class="btn-primary" (click)="accedi()">Entra</button>
+    </form>
+
+    <form *ngIf="mode === 'register'" class="access-form">
+      <div class="input-group">
+        <label>Nome</label>
+        <input type="text" name="nome" [(ngModel)]="nuovoUtente.nome" placeholder="Mario Rossi">
+      </div>
+      
+      <div class="input-group">
+        <label>Cognome</label>
+        <input type="text" name="cognome" [(ngModel)]="nuovoUtente.cognome" placeholder="Rossi">
+      </div>
+
+      <div class="input-group">
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="nuovoUtente.username" placeholder="mario88">
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="nuovoUtente.email" placeholder="mario.rossi@esempio.it">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="nuovoUtente.password" placeholder="Minimo 8 caratteri">
+      </div>
+      <button type="button" class="btn-primary" (click)="registrati()">Crea Account</button>
+    </form>
+  </div>
+</div>
