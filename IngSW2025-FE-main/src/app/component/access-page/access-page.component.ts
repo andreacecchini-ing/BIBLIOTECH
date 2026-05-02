@@ -13,12 +13,13 @@ import { Router } from '@angular/router'; // Importa il Router //la uso per pass
   styleUrl: './access-page.component.scss'
 })
 export class AccessPageComponent {
-  mode: 'login' | 'register' = 'login'; // Imposta il login come default
+  mode: 'login' | 'register'| 'register2' | 'register3' = 'login'; // Imposta il login come default
 
   constructor(private router: Router, private utentiService: UtentiService) {}
 
   listaUtenti: Utenti[] = [];
-  
+  isBibliotecario: boolean = false;
+
   goToHome() {
     this.router.navigate(['/']); // Naviga verso la rotta 'home'
   }
@@ -41,7 +42,8 @@ export class AccessPageComponent {
   password: '',
   cellulare: '', // Aggiunto
   indirizzo: '', // Aggiunto
-  data_nascita: '' // Aggiunto
+  data_nascita: '', // Aggiunto
+  biblioteca: '' // Aggiunto per il codice identificativo del bibliotecario
   };
 
   utenteLoggato: Utenti | null = null; // Variabile per memorizzare l'utente loggato

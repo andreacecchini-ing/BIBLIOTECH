@@ -6,7 +6,7 @@
 
     <div class="tabs">
       <button (click)="mode = 'login'" [class.active]="mode === 'login'">Accedi</button>
-      <button (click)="mode = 'register'" [class.active]="mode === 'register'">Registrati</button>
+      <button (click)="mode = 'register'" [class.active]="mode.startsWith('register')">Registrati</button>
     </div>
 
     <form *ngIf="mode === 'login'" class="access-form">
@@ -24,7 +24,7 @@
     <form *ngIf="mode === 'register'" class="access-form">
       <div class="input-group">
         <label>Nome</label>
-        <input type="text" name="nome" [(ngModel)]="nuovoUtente.nome" placeholder="Mario Rossi">
+        <input type="text" name="nome" [(ngModel)]="nuovoUtente.nome" placeholder="Mario">
       </div>
       
       <div class="input-group">
@@ -37,6 +37,34 @@
         <input type="text" name="username" [(ngModel)]="nuovoUtente.username" placeholder="mario88">
       </div>
 
+      <div class="button-group">
+        <button type="button" class="btn-next" (click)="mode = 'register2'" [class.active]="mode === 'register'">next-page</button>
+      </div>
+    </form>
+
+    <form *ngIf="mode === 'register2'" class="access-form">
+      <div class="input-group">
+        <label>Cellulare</label>
+        <input type="text" name="cellulare" [(ngModel)]="nuovoUtente.cellulare" placeholder="3471234567">
+      </div>
+      
+      <div class="input-group">
+        <label>Indirizzo</label>
+        <input type="text" name="indirizzo" [(ngModel)]="nuovoUtente.indirizzo" placeholder="Via Roma, 1">
+      </div>
+
+      <div class="input-group">
+        <label>Data di nascita</label>
+        <input type="text" name="data_nascita" [(ngModel)]="nuovoUtente.data_nascita" placeholder="2001-01-31">
+      </div>
+      <div class="button-group">
+        <button type="button" class="btn-back" (click)="mode = 'register'" [class.active]="mode === 'register2'">back</button>
+        <button type="button" class="btn-next" (click)="mode = 'register3'" [class.active]="mode === 'register2'">next-page</button>
+        
+      </div>
+    </form>
+
+    <form *ngIf="mode === 'register3'" class="access-form">   
       <div class="input-group">
         <label>Email</label>
         <input type="email" name="email" [(ngModel)]="nuovoUtente.email" placeholder="mario.rossi@esempio.it">
@@ -46,7 +74,19 @@
         <label>Password</label>
         <input type="password" name="password" [(ngModel)]="nuovoUtente.password" placeholder="Minimo 8 caratteri">
       </div>
-      <button type="button" class="btn-primary" (click)="registrati()">Crea Account</button>
+
+      <div class="input-group">
+        <label>Sono un bibliotecario<input type="checkbox" name="isBibliotecario" [(ngModel)]="isBibliotecario"></label>
+      </div>
+        <!-- Questo input appare SOLO se la checkbox sopra è spuntata -->
+      <div class="input-group" *ngIf="isBibliotecario">
+          <!--<label>Codice Identificativo Bibliotecario</label>-->
+          <input type="text" name="biblioteca" [(ngModel)]="nuovoUtente.biblioteca" placeholder="Inserisci il tuo codice">
+      </div>
+      <div class="button-group">
+        <button type="button" class="btn-back" (click)="mode = 'register2'" [class.active]="mode === 'register3'">back</button>
+        <button type="button" class="btn-primary" (click)="registrati()">Crea Account</button>
+      </div>
     </form>
   </div>
 </div>

@@ -29,6 +29,7 @@ public class Utenti {
     private String indirizzo;
     private String data_nascita;
     private String password;
+    private String biblioteca;
 
     
     public String getEmail() {
