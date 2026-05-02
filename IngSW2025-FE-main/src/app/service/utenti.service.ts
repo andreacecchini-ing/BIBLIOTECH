@@ -34,6 +34,22 @@ export class UtentiService {
   }
   save(utente: any) {//tentativo di fare il save per la registrazione, non riesco a farlo funzionare
   // DEVE esserci il return davanti a this.http
-  return this.http.post('http://localhost:8080/api/utenti', utente);
+    return this.http.post('http://localhost:8080/api/utenti', utente);
+  }
+  // utenti.service.ts
+  login(credenziali: any): Observable<any> { // Aggiungi : Observable<any>
+    return this.http.post('http://localhost:8080/api/utenti/login', credenziali);
+  }
+  
+  // Questa variabile conterrà l'utente con il suo ID reale del DB
+  private utenteSessione: any = null;
+
+  setUtenteLoggato(utente: any) {
+    this.utenteSessione = utente;
+    console.log("Utente salvato in sessione:", this.utenteSessione);
+  }
+
+  getUtenteLoggato() {
+    return this.utenteSessione;
   }
 }

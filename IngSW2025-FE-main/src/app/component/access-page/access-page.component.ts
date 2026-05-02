@@ -60,13 +60,18 @@ export class AccessPageComponent {
   }
   // Metodo per inviare i dati al backend
   accedi() {
-    if(!this.listaUtenti.some(utente => utente.email === this.nuovoUtente.email && utente.password === this.nuovoUtente.password)) {
-      alert('Errore nell\'accesso. L\'email o la password potrebbero essere errati.');//L'utente non esiste o la password è errata
-      return;
-    }else {
+    console.log("Dati inviati:", this.nuovoUtente);
+  // Chiamiamo il backend invece di controllare la lista locale
+    this.utentiService.login(this.nuovoUtente).subscribe({
+      next: (utenteDalDB: any) => {
         alert('L\'utente ha effettuato l\'accesso con successo!');
-        this.utenteLoggato = this.nuovoUtente; // Memorizza l'utente loggato
-        this.goToUtBase(); // Vai alla pagina principale dell'utente dopo il successo
-    }
+        this.utenteLoggato = utenteDalDB; // Salva l'utente con il suo ID reale
+        this.utentiService.setUtenteLoggato(utenteDalDB); // Salva l'utente nel servizio
+        this.goToUtBase();
+      },
+      error: (err:any) => {
+        alert('Errore nell\'accesso. Email o password errati.');
+      }
+    });
   }
 }

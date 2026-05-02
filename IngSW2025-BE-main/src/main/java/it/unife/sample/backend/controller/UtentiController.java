@@ -2,9 +2,11 @@ package it.unife.sample.backend.controller;
 
 import it.unife.sample.backend.model.Utenti;
 import it.unife.sample.backend.service.UtentiService;
+import it.unife.sample.backend.repository.UtentiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +20,8 @@ public class UtentiController {
 
     @Autowired
     private UtentiService service;
+    @Autowired
+    private UtentiRepository repository;
 
     @GetMapping
     public List<Utenti> getAll() {
@@ -29,6 +33,26 @@ public class UtentiController {
         Optional<Utenti> entity = service.findById(id);
         return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Utenti loginData) {
+    // Cerca l'utente per email nel database
+        return repository.findByEmail(loginData.getEmail())
+        .filter(u -> u.getPassword().equals(loginData.getPassword()))
+        .map(u -> ResponseEntity.ok(u))
+        .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+    /* @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody java.util.Map<String, String> loginData) {
+        String email = loginData.get("email");
+        String password = loginData.get("password");
+
+        return repository.findByEmail(email)
+                .filter(u -> u.getPassword().equals(password))
+                .map(u -> ResponseEntity.ok(u))
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+    */
 
     @PostMapping
     public Utenti create(@RequestBody Utenti entity) {

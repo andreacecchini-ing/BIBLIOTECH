@@ -29,4 +29,13 @@ public class Utenti {
     private String indirizzo;
     private String data_nascita;
     private String password;
+
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }    
 }

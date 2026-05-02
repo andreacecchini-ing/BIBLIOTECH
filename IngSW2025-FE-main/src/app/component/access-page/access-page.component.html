@@ -12,11 +12,11 @@
     <form *ngIf="mode === 'login'" class="access-form">
       <div class="input-group">
         <label>Email</label>
-        <input type="email" placeholder="Inserisci la tua email" [(ngModel)]="nuovoUtente.email">
+        <input type="email" placeholder="Inserisci la tua email" [(ngModel)]="nuovoUtente.email" name="email">
       </div>
       <div class="input-group">
         <label>Password</label>
-        <input type="password" placeholder="••••••••" [(ngModel)]="nuovoUtente.password">
+        <input type="password" placeholder="••••••••" [(ngModel)]="nuovoUtente.password" name="password">
       </div>
       <button type="button" class="btn-primary" (click)="accedi()">Entra</button>
     </form>
