@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Lista Libri</h2>
+  
+  <table *ngIf="listaLibri.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titolo</th>
+        <th>Autore</th>
+        <th>Anno</th>
+        <th>Genere</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of listaLibri">
+        <td>{{ l.id }}</td>
+        <td>{{ l.titolo }}</td>
+        <td>{{ l.autore }}</td>
+        <td>{{ l.anno }}</td>
+        <td>{{ l.genere }}</td>
+        <td><button class="btn-delete" (click)="elimina(l.id)">Elimina</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn-add" (click)="aggiungiNuovo()">Aggiungi Libro</button>
+  
+  <ng-template #noData>
+    <p>Nessun libro trovato nel database.</p>
+  </ng-template>
+</div>

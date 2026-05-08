@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Lista Utenti Registrati</h2>
+  
+  <table *ngIf="listaUtenti.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Email</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of listaUtenti">
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.nome }}</td>
+        <td>{{ u.cognome }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.password}}</td>
+        <td><button class="btn-delete" (click)="elimina(u.id)">Elimina</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn-add" (click)="aggiungiNuovo()">Aggiungi Utente</button>
+  
+  <ng-template #noData>
+    <p>Nessun utente trovato nel database.</p>
+  </ng-template>
+</div>
