@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {SampleEntitiesComponent} from './component/sample-entities/sample-entities.component';
 
 @Component({
   selector: 'app-root',
