@@ -16,19 +16,22 @@ export class LibriService {
     return this.http.get<Libri[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Libri> {
-    return this.http.get<Libri>(`${this.apiUrl}/${id}`);
+  getById(ISBN: number): Observable<Libri> {
+    return this.http.get<Libri>(`${this.apiUrl}/${ISBN}`);
   }
 
   create(entity: Libri): Observable<Libri> {
     return this.http.post<Libri>(this.apiUrl, entity);
   }
 
-  update(id: number, entity: Libri): Observable<Libri> {
-    return this.http.put<Libri>(`${this.apiUrl}/${id}`, entity);
+  update(ISBN: number, entity: Libri): Observable<Libri> {
+    return this.http.put<Libri>(`${this.apiUrl}/${ISBN}`, entity);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  delete(ISBN: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${ISBN}`);
+  }
+  getPrenotazioniUtente(): Observable<Libri[]> {
+    return this.http.get<Libri[]>(`${this.apiUrl}/prenotazioni`);
   }
 }

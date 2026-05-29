@@ -8,14 +8,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { H } from '@angular/cdk/keycodes';
 
 @Component({
-  selector: 'app-ut-base',
+  selector: 'app-bibliotecario',
   standalone: true,
   imports: [CommonModule, HttpClientModule],
-  templateUrl: './ut-base.component.html',
-  styleUrl: './ut-base.component.scss'
+  templateUrl: './bibliotecario.component.html',
+  styleUrl: './bibliotecario.component.scss'
 })
 
-export class UtBaseComponent implements OnInit {
+export class BibliotecarioComponent implements OnInit {
   tuttiILibri: Libri[] = [];
   listaLibri: Libri[] = [];
   paginaCorrente: number = 0;
@@ -27,14 +27,11 @@ export class UtBaseComponent implements OnInit {
 
   constructor(private router: Router, private libriService: LibriService, private utentiService: UtentiService, private http: HttpClient) {}
 
-  goToKart() {
+  goToBookManagement() {
     this.menuAperto = false;
-    this.router.navigate(['/kart']); 
+    this.router.navigate(['/book-management']); 
   }
-  goToProfile() {
-    this.menuAperto = false;
-    //this.router.navigate(['/profile']); 
-  }
+  
   goToHome() {
     this.router.navigate(['/']); 
     const utente = null; 

@@ -80,7 +80,7 @@
       </div>
       <div class="input-group" *ngIf="isBibliotecario">
           <!--<label>Codice Identificativo Bibliotecario</label>-->
-          <input type="text" name="biblioteca" [(ngModel)]="nuovoUtente.biblioteca" placeholder="Inserisci il tuo codice">
+          <input type="text" name="biblioteca" [(ngModel)]="codiceBiblioteca" placeholder="Inserisci il tuo codice">
       </div>
       <div class="button-group">
         <button type="button" class="btn-back" (click)="mode = 'register2'" [class.active]="mode === 'register3'">back</button>

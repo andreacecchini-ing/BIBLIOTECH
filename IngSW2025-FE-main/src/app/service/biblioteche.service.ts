@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Utenti } from '../dto/utenti.model';
+import { Biblioteche } from '../dto/biblioteche.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UtentiService {
+export class BibliotecheService {
 
-  private apiUrl = '/api/utenti'; 
+  private apiUrl = '/api/biblioteche'; 
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Utenti[]> {
-    return this.http.get<Utenti[]>(this.apiUrl);
+  getAll(): Observable<Biblioteche[]> {
+    return this.http.get<Biblioteche[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Utenti> {
-    return this.http.get<Utenti>(`${this.apiUrl}/${id}`);
+  getById(id: number): Observable<Biblioteche> {
+    return this.http.get<Biblioteche>(`${this.apiUrl}/${id}`);
   }
-
+/*
   create(entity: Utenti): Observable<Utenti> {
     return this.http.post<Utenti>(this.apiUrl, entity);
   }
@@ -49,4 +49,5 @@ export class UtentiService {
   getUtenteLoggato() {
     return this.utenteSessione;
   }
+    */
 }

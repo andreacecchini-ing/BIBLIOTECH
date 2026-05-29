@@ -79,17 +79,15 @@
     }
   }
 
-  /* Rimosso il limite max-width rigido per occupare tutto lo schermo disponibile */
   .dashboard-wrapper {
     display: flex;
-    flex-direction: column; /* Tutto in verticale: filtri sopra, griglia sotto */
+    flex-direction: column;
     gap: 25px;
-    max-width: 98%; /* Sfrutta quasi il 100% dello schermo */
+    max-width: 98%;
     margin: 0 auto;
     padding: 30px 20px;
   }
 
-  /* Nuova Barra dei Filtri Orizzontale in Cima */
   .filter-bar {
     background: #111c35;
     padding: 16px 24px;
@@ -98,7 +96,7 @@
     display: flex;
     align-items: center;
     gap: 24px;
-    flex-wrap: wrap; /* Ottimo se lo schermo si restringe */
+    flex-wrap: wrap;
 
     .filter-title-label {
       font-size: 0.95rem;
@@ -129,7 +127,6 @@
     }
   }
 
-  /* Selettori personalizzati */
   .custom-select-wrapper {
     position: relative;
     min-width: 160px;
@@ -164,15 +161,12 @@
     }
   }
 
-  /* Griglia fluida adattata alla massima larghezza dello schermo */
   .book-grid {
     display: grid;
-    /* Manteniamo la dimensione minima bassa così da mostrare 6/7/8 elementi a seconda del monitor */
     grid-template-columns: repeat(auto-fill, minmax(211px, 1fr));
     gap: 20px;
   }
 
-  /* Card Stile Carta Collezionabile */
   .book-card {
     background: #111c35;
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -192,7 +186,7 @@
     .cover-wrapper {
       position: relative;
       background: #16223f;
-      height: 200px; /* Ritoccato leggermente per bilanciare la larghezza fluida */
+      height: 200px;
       overflow: hidden;
       display: flex;
       align-items: center;

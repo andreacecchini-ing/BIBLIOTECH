@@ -1,22 +1,76 @@
-<div class="main-kart">
+<div class="main-container">
   <header>
-    <div class="home-icon" (click)="goToUtBase()"><--</div>
-    <h1>CARRELLO</h1>
+    <div class="home-icon" (click)="goToUtBase()">🏠</div>
+    <h1>BIBLIOTECH</h1>
+    <div class="user-menu-container">
+      <div class="user-icon" (click)="toggleMenu()">👤</div>
+      
+      <div class="dropdown-menu" *ngIf="menuAperto">
+        <ng-container>
+          <div class="menu-item" (click)="goToProfile()">PROFILO</div>
+          <div class="menu-item logout" (click)="goToHome()">LOGOUT</div>
+        </ng-container>
+      </div>
+    </div>
   </header>
 
-  <div class="book-list">
-    <div class="book-card" *ngFor="let libro of listaLibri">
-      <div class="cover-circle">Cover</div>
-      
-      <div class="book-info">
-        <span class="book-title">{{ libro.titolo }}</span>
-        <span class="divider">•</span>
-        <span class="book-details">
-          {{ libro.autore }} — {{ libro.anno }} — {{ libro.genere }}
-        </span>
-      </div>
-
-      <div class="status-circle">OK</div>
-    </div>
+  <div class="tabs">
+      <button (click)="mode = 'prenotazioni'" [class.active]="mode === 'prenotazioni'">PRENOTAZIONI</button>
+      <button (click)="mode = 'recensioni'" [class.active]="mode === 'recensioni'">RECENSIONI</button>
   </div>
+
+  <div  class="dashboard-wrapper">
+
+    <section *ngIf="mode === 'prenotazioni' "class="tile">
+      <h2 class="section-title">Libri Prenotati</h2>
+      <div class="book-list">
+        <p *ngIf="libriPrenotati.length === 0" class="empty-msg">Nessun libro prenotato.</p>
+        <div class="book-card" *ngFor="let libro of libriPrenotati">
+          <div class="cover-thumb">Cover</div>
+          <div class="book-info">
+            <h3>{{ libro.titolo }}</h3>
+            <p>{{ libro.autore }}</p>
+          </div>
+          <button class="btn-action">ANNULLA</button>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="mode === 'recensioni'" class="tile">
+      <h2 class="section-title">Le Mie Recensioni</h2>
+      <div class="review-list">
+        <p *ngIf="listaRecensioni.length === 0" class="empty-msg">Nessuna recensione presente.</p>
+        <div class="review-item" *ngFor="let rec of listaRecensioni">
+          <div class="review-header"><strong>{{ rec.titoloLibro }}</strong> - {{ rec.voto }}/5</div>
+          <p>{{ rec.commento }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!--<div class="dashboard-wrapper">
+    <section class="tile">
+      <h2 class="section-title">Libri Prenotati</h2>
+      <div class="book-list">
+        <div class="book-card" *ngFor="let libro of libriPrenotati">
+          <div class="cover-thumb">Cover</div>
+          <div class="book-info">
+            <h3>{{ libro.titolo }}</h3>
+            <p>{{ libro.autore }}</p>
+          </div>
+          <button class="btn-action">ANNULLA</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="tile">
+      <h2 class="section-title">Le Mie Recensioni</h2>
+      <div class="review-list">
+        <div class="review-item" *ngFor="let rec of listaRecensioni">
+          <div class="review-header"><strong>{{ rec.titoloLibro }}</strong> - {{ rec.voto }}/5</div>
+          <p>{{ rec.commento }}</p>
+        </div>
+      </div>
+    </section>
+  </div>-->
 </div>

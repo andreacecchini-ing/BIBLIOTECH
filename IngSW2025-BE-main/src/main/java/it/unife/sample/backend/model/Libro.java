@@ -10,12 +10,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "libri") 
-public class Libri {
+@Table(name = "libro") 
+public class Libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; 
+    private Long isbn;
     @Column(unique = true, nullable = false)
     private String titolo;
     @Column(unique = true, nullable = false)
@@ -24,4 +24,7 @@ public class Libri {
     private String anno;
     @Column(unique = true, nullable = false)
     private String genere;
+    @Column(unique = true, nullable = false, columnDefinition = "TEXT")
+    private String trama;
+    
 }

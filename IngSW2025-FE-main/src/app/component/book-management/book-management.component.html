@@ -1,0 +1,61 @@
+<div class="main-container">
+  <header>
+    <div class="home-icon" (click)="goToHome()">🏠</div>
+    <h1>BIBLIOTECH</h1>
+    <div class="user-menu-container">
+      <div class="user-icon" (click)="toggleMenu()">👤</div>
+      <div class="dropdown-menu" *ngIf="menuAperto">
+          <div class="menu-item" (click)="goToProfile()">PROFILO</div>
+        <div class="menu-item logout" (click)="goToHome()">LOGOUT</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <div class="controls">
+      <h2>Gestione Libri - {{ nomeBiblioteca }}</h2>
+      <button class="btn-add" (click)="aggiungiLibro()">+ Aggiungi Libro</button>
+    </div>
+
+    <div class="book-grid">
+      <div class="book-card" *ngFor="let libro of listaLibri">
+        <div class="cover-wrapper">
+          <img [src]="'https://covers.openlibrary.org/b/title/' + libro.titolo + '-L.jpg'" alt="Copertina">
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">{{ libro.titolo }}</h3>
+          <span class="book-author">{{ libro.autore }}</span>
+          <button class="btn-remove" (click)="rimuoviLibro(libro.isbn)">RIMUOVI</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" *ngIf="aggiungiLibroAperto">
+      <div class="modal">
+        <h3>Aggiungi Nuovo Libro</h3>
+        <div class="form-group">
+          <input [(ngModel)]="nuovoLibro.titolo" placeholder="Titolo">
+          <input [(ngModel)]="nuovoLibro.autore" placeholder="Autore">
+          <input [(ngModel)]="nuovoLibro.isbn" placeholder="ISBN">
+          <input [(ngModel)]="nuovoLibro.genere" placeholder="Genere">
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cancel" (click)="chiudiOverlay()">ANNULLA</button>
+          <button class="btn-save" (click)="salvaLibro()">SALVA</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination-container" *ngIf="totalePagine > 1">
+      <button (click)="paginaPrecedente()" [disabled]="paginaCorrente === 0" class="pag-btn">
+        ◀ Prec.
+      </button>
+      <span class="page-indicator">Pagina {{ paginaCorrente + 1 }} di {{ totalePagine }}</span>
+      <button (click)="paginaSuccessiva()" [disabled]="paginaCorrente >= totalePagine - 1" class="pag-btn">
+        Succ. ▶
+      </button>
+    </div>
+
+  </div>
+
+</div>

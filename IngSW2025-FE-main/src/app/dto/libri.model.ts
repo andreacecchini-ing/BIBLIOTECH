@@ -1,7 +1,8 @@
 export interface Libri {
-  id?: number;
+  isbn?: string|number;
   titolo: string;
   autore: string;
   anno: string;
   genere: string;
+  trama: Text;
 }

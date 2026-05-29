@@ -3,51 +3,57 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../../images/BlurredImage.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d1527;
+  font-family: 'Segoe UI', Roboto, sans-serif;
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: #111c35;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 450px;
     text-align: center;
 
-    h1 { color: #2c3e50; margin-bottom: 5px; letter-spacing: 2px; }
-    .subtitle { color: #7f8c8d; margin-bottom: 30px; font-size: 0.9rem; }
+    h1 { 
+      color: #ffffff; 
+      margin-bottom: 5px; 
+      letter-spacing: 2px; 
+      font-weight: 800;
+    }
+    .subtitle { 
+      color: #8fa0dd; 
+      margin-bottom: 30px; 
+      font-size: 0.9rem; 
+    }
 
     .home-icon {
       font-size: 1.4rem;
-      background: white;
-      width: 35px;
-      height: 35px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
       cursor: pointer;
-      transition: all 0.5s ease;
+      transition: all 0.3s ease;
 
       &:hover {
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        color: #3498db;
-        transform: scale(1.1);
+        background: #d4af37;
+        color: #0d1527;
       }
     }
   }
 
   .tabs {
     display: flex;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #eee;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     button {
       flex: 1;
@@ -55,104 +61,91 @@
       border: none;
       background: none;
       cursor: pointer;
-      font-weight: bold;
-      color: #bdc3c7;
+      font-weight: 600;
+      color: #8fa0dd;
       transition: 0.3s;
 
-      &.active { color: #3498db; border-bottom: 2px solid #3498db; }
+      &.active { 
+        color: #d4af37; 
+        border-bottom: 2px solid #d4af37; 
+      }
     }
   }
 
   .access-form {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     text-align: left;
 
     .input-group {
       display: flex;
       flex-direction: column;
-      width: 100%;
       gap: 5px;
-      label { font-size: 0.85rem; font-weight: bold; color: #34495e; }
+      label { 
+        font-size: 0.8rem; 
+        font-weight: 600; 
+        color: #8fa0dd; 
+        text-transform: uppercase;
+      }
       input {
         padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
+        background: #0d1527;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        color: white;
         outline: none;
-        &:focus { border-color: #3498db; }
+        &:focus { border-color: #d4af37; }
       }
     }
 
     .btn-primary {
-      background: #3498db;
+      background: #d4af37;
       flex-grow: 1;
-      color: white;
+      color: #0d1527;
       padding: 14px;
       border: none;
       border-radius: 8px;
-      font-weight: bold;
+      font-weight: 800;
       cursor: pointer;
       margin-top: 10px;
-      transition: background 0.3s;
-      &:hover { background: #2980b9; }
+      transition: all 0.3s;
+      &:hover { background: #b8962f; }
     }
+
     .button-group {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 10px;
       width: 100%;
       margin-top: 10px;
 
-      //non più usato btn-secondary, ma lo lascio per sicurezza
-      .btn-secondary {
-        background: #ecf0f1;
-        color: #2c3e50;
+      .btn-back {
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
         padding: 14px;
-        border: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 8px;
-        font-weight: bold;
+        font-weight: 600;
         cursor: pointer;
-        margin-top: 10px;
-        transition: background 0.3s;
-        &:hover { background: #bdc3c7; }
-      }
-      .btn-next {
-        width: 400px; 
-        height: 40px;
-        padding: 14px;
-        display: flex;
         flex-grow: 1;
-        justify-content: center;
-        align-items: right;
+        transition: 0.3s;
+        &:hover { background: rgba(255, 255, 255, 0.1); }
+      }
 
-        border-radius: 8px;
-        cursor: pointer;
+      .btn-next {
         background: #27ae60;
         color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: background 0.3s;
-        &:hover { background: #219653; }
-      }
-      .btn-back {
-        background: #e74c3c;
-        flex-grow: 1;
-        color: white;
         padding: 14px;
         border: none;
         border-radius: 8px;
         font-weight: bold;
         cursor: pointer;
-        margin-top: 10px;
-        transition: background 0.3s;
-        &:hover { background: #c0392b; }
+        flex-grow: 1;
+        transition: 0.3s;
+        &:hover { background: #219150; }
       }
-
       .btn-back + .btn-next {
         flex-basis: calc(50% + 100px);
         margin-left: 10px;

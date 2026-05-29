@@ -10,8 +10,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "utenti") 
-public class Utenti {
+@Table(name = "utente") 
+public class Utente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -29,7 +29,7 @@ public class Utenti {
     private String indirizzo;
     private String data_nascita;
     private String password;
-    private String biblioteca;
+    private String ruolo;
 
     
     public String getEmail() {

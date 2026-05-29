@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Utenti } from '../dto/utenti.model';
+import { Gestione } from '../dto/gestione.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UtentiService {
+export class GestioneService {
 
-  private apiUrl = '/api/utenti'; 
+  private apiUrl = '/api/gestione'; 
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Utenti[]> {
-    return this.http.get<Utenti[]>(this.apiUrl);
+  getAll(): Observable<Gestione[]> {
+    return this.http.get<Gestione[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Utenti> {
-    return this.http.get<Utenti>(`${this.apiUrl}/${id}`);
+  getById(id: number): Observable<Gestione> {
+    return this.http.get<Gestione>(`${this.apiUrl}/${id}`);
   }
-
+/*
   create(entity: Utenti): Observable<Utenti> {
     return this.http.post<Utenti>(this.apiUrl, entity);
   }
@@ -31,10 +31,11 @@ export class UtentiService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-  
-  save(utente: any) {
-    return this.http.post('http://localhost:8080/api/utenti', utente);
+  */
+  save(gestione: any) {
+    return this.http.post('http://localhost:8080/api/gestioni', gestione);
   }
+  /*
   login(credenziali: any): Observable<any> { 
     return this.http.post('http://localhost:8080/api/utenti/login', credenziali);
   }
@@ -49,4 +50,5 @@ export class UtentiService {
   getUtenteLoggato() {
     return this.utenteSessione;
   }
+    */
 }

@@ -1,2 +1,85 @@
-<p>sei dento un libro forse</p>
+<div class="main-container">
+  <header>
+    <div class="home-icon" (click)="goToHome()">🏠</div>
+    <h1 class="logo-text" (click)="goToHome()">BIBLIOTECH</h1>
+    <div class="user-icon" (click)="toggleMenu()">👤</div>
+    <div class="dropdown-menu" *ngIf="menuAperto">
+        <ng-container *ngIf="ruoloUtente === 'ospite'">
+          <div class="menu-item" (click)="goToLogin()">ACCEDI</div>
+          <div class="menu-item" (click)="goToRegister()">REGISTRATI</div>
+        </ng-container>
 
+        <ng-container *ngIf="ruoloUtente === 'utente'">
+          <div class="menu-item" (click)="goToHome()">PROFILO</div>
+          <div class="menu-item" (click)="goToKart()">CARRELLO</div>
+          <div class="menu-item logout" (click)="Logout()">LOGOUT</div>
+        </ng-container>
+
+        <ng-container *ngIf="ruoloUtente === 'bibliotecario'">
+          <div class="menu-item" (click)="goToHome()">PROFILO</div>
+          <div class="menu-item" (click)="goToHome()">AGGIUNGI LIBRO</div>
+          <div class="menu-item logout" (click)="goToHome()">LOGOUT</div>
+        </ng-container>
+      </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <div class="main-content">
+      
+      <aside class="sidebar-left">
+        <div class="image-box">
+          <img  [src]="'https://covers.openlibrary.org/b/title/' + libro?.titolo + '-L.jpg'" 
+                alt="Copertina di {{libro?.titolo}}"
+                class="card-img-top"
+                onerror="Copertina">
+          <!-- <div>Copertina</div> -->
+        </div>
+        
+        <div class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        
+        <button class="btn-prenota" (click)="prenotaLibro()">PRENOTA ORA</button>
+        
+        
+
+      </aside>
+
+      <main class="info-column">
+
+        <section class="tile metadata-tile">
+          <h2>{{ libro?.titolo }}</h2>
+          <p class="subtitle">{{ libro?.autore }} • {{ libro?.genere }}</p>
+        </section>
+
+        <section class="tile plot-tile">
+          <h3 class="tile-label">Trama</h3>
+          <p class="tile-text">{{ libro?.trama || 'Nessuna descrizione disponibile.' }}</p>
+        </section>
+
+        <section class="tile reviews-tile">
+          <h3 class="tile-label">Recensioni</h3>
+          <div class="review-item" *ngFor="let rec of recensioni">
+            <div class="review-header">{{rec.voto}}/5 - <strong>{{ rec.username }}</strong></div>
+            <p>{{ rec.commento }}</p>
+          </div>
+          <p *ngIf="recensioni.length === 0" class="no-reviews">Nessuna recensione.</p>
+        </section>
+      </main>
+
+      <aside class="sidebar-right">
+          <h3 class="tile-label">Scegli Biblioteca</h3>
+          <div class="radio-group">
+            <label *ngFor="let bib of listaBiblioteche" class="radio-option">
+              <input type="radio" 
+                     name="biblioteca" 
+                     [(ngModel)]="bibliotecaSelezionata" 
+                     [value]="bib.id_biblioteca">
+              <span class="bib-info">
+                {{ bib.nome }} 
+                <small class="copie-badge">0<!--({{ bib.copieDisponibili }} disp.)--></small>
+              </span>
+            </label>
+          </div>
+        </aside>
+    </div>
+  </div>
+</div>

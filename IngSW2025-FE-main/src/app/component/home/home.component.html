@@ -2,22 +2,121 @@
   <header>
     <div class="home-icon" (click)="goToHome()">🏠</div>
     <h1>BIBLIOTECH</h1>
-    <div class="user-icon" (click)="goToLogin()">👤</div>
-  </header>
-
-  <div class="book-list">
-    <div class="book-card" *ngFor="let libro of listaLibri">
-      <div class="cover-circle">Cover</div>
+    <div class="user-menu-container">
+      <div class="user-icon" (click)="toggleMenu()">👤</div>
       
-      <div class="book-info">
-        <span class="book-title">{{ libro.titolo }}</span>
-        <span class="divider">•</span>
-        <span class="book-details">
-          {{ libro.autore }} — {{ libro.anno }} — {{ libro.genere }}
-        </span>
-      </div>
+      <div class="dropdown-menu" *ngIf="menuAperto">
+        <ng-container *ngIf="ruoloUtente === 'ospite'">
+          <div class="menu-item" (click)="azioneLogout()">ACCEDI</div>
+          <div class="menu-item" (click)="goToRegister()">REGISTRATI</div>
+        </ng-container>
 
-      <div class="status-circle">OK</div>
+        <ng-container *ngIf="ruoloUtente === 'utente'">
+          <div class="menu-item" (click)="vaiAlCarrello()">CARRELLO</div>
+          <div class="menu-item logout" (click)="azioneLogout()">LOGOUT</div>
+        </ng-container>
+
+        <ng-container *ngIf="ruoloUtente === 'bibliotecario'">
+          <div class="menu-item" (click)="aggiungiLibro()">AGGIUNGI LIBRO</div>
+          <div class="menu-item logout" (click)="azioneLogout()">LOGOUT</div>
+        </ng-container>
+      </div>
     </div>
+  </header>
+  
+  <div class="dashboard-wrapper">   
+    
+    <section class="filter-bar">
+      <div class="filter-title-label">
+          <label for="searchTitle">🔍 Cerca per titolo:</label>
+          <input class="ricerca-input" 
+                 type="text" 
+                 id="searchTitle" 
+                 [(ngModel)]="titoloFiltro" 
+                 (input)="filtraLibri()" 
+                 placeholder="Digita il titolo...">
+      </div>
+      <span class="filter-title-label">🔍 Filtra catalogo:</span>
+
+      <div class="filter-group">
+        <div class="filter-item">
+          <label for="selectGenere">Genere</label>
+          <div class="custom-select-wrapper">
+            <select id="selectGenere" (change)="onChangeFiltroGenere($event)">
+              <option value="">Tutti i generi</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Fantascienza">Fantascienza</option>
+              <option value="Horror">Horror</option>
+              <option value="Gothic">Gothic</option>
+              <option value="Classico">Classico</option>
+              <option value="Distopia">Distopia</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-item">
+          <label for="selectOrdinamento">Ordina per</label>
+          <div class="custom-select-wrapper">
+            <select id="selectOrdinamento" (change)="onChangeOrdinamento($event)">
+              <option value="titolo">Titolo (A-Z)</option>
+              <option value="autore">Autore</option>
+              <option value="anno">Anno</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-item">
+          <label for="selectBiblioteca">Biblioteca</label>
+          <div class="custom-select-wrapper">
+            <select id="selectBiblioteca" (change)="onChangeFiltroBiblioteca($event)">
+              <option value="">Tutte le biblioteche</option>
+              <option *ngFor="let bib of listaBiblioteche" [value]="bib.id_biblioteca">{{ bib.nome }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="book-grid">
+      <div class="book-card" *ngFor="let libro of listaLibriFiltrati" (click)="openLibro(libro)">
+        
+        <div class="cover-wrapper">
+          <img [src]="'https://covers.openlibrary.org/b/title/' + libro.titolo + '-L.jpg'" 
+               alt="Copertina di {{libro.titolo}}"
+               class="card-img-top">
+               <!--onerror="this.src='assets/copertina-default.png'"-->   
+               <!--<span class="cover-placeholder">Copertina></span>-->
+          <div class="status-badge">OK</div>
+        </div>
+        
+        <div class="book-info">
+          <h3 class="book-title">{{ libro.titolo }}</h3>
+          <span class="book-author">{{ libro.autore }}</span>
+          
+          <div class="book-meta">
+            <span class="book-tag">{{ libro.genere }}</span>
+            <span class="book-year">{{ libro.anno }}</span>
+          </div>
+          
+          <div class="card-footer">
+            <span class="status-text">Disponibile</span>
+            <button class="btn-action" (click)="$event.stopPropagation(); openLibro(libro)">
+              <span>+</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pagination-container">
+      <button (click)="paginaPrecedenteFO()" [disabled]="paginaCorrente === 0" class="pag-btn">
+        ◀ Prec.
+      </button>
+      <span class="page-indicator">Pagina {{ paginaCorrente + 1 }} di {{ totalePagine }}</span>
+      <button (click)="paginaSuccessivaFO()" [disabled]="paginaCorrente >= totalePagine - 1" class="pag-btn">
+        Succ. ▶
+      </button>
+    </div>
+
   </div>
 </div>
