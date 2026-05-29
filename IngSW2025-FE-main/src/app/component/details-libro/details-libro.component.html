@@ -52,7 +52,7 @@
 
         <section class="tile plot-tile">
           <h3 class="tile-label">Trama</h3>
-          <p class="tile-text">{{ libro?.trama || 'Nessuna descrizione disponibile.' }}</p>
+          <p class="tile-text"><!--{{ libro?.trama || 'Nessuna descrizione disponibile.' }}--></p>
         </section>
 
         <section class="tile reviews-tile">
@@ -72,7 +72,7 @@
               <input type="radio" 
                      name="biblioteca" 
                      [(ngModel)]="bibliotecaSelezionata" 
-                     [value]="bib.id_biblioteca">
+                     [value]="bib.idBiblioteca">
               <span class="bib-info">
                 {{ bib.nome }} 
                 <small class="copie-badge">0<!--({{ bib.copieDisponibili }} disp.)--></small>

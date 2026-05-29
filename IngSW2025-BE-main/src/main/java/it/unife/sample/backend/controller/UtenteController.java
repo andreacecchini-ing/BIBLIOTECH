@@ -29,8 +29,8 @@ public class UtenteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Utente> getById(@PathVariable Long id) {
-        Optional<Utente> entity = service.findById(id);
+    public ResponseEntity<Utente> getById(@PathVariable String username) {
+        Optional<Utente> entity = service.findByUsername(username);
         return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -65,21 +65,21 @@ public class UtenteController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Utente> update(@PathVariable Long id, @RequestBody Utente entity) {
-        if (!service.findById(id).isPresent()) {
+    @PutMapping("/{username}")
+    public ResponseEntity<Utente> update(@PathVariable String username, @RequestBody Utente entity) {
+        if (!service.findByUsername(username).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        entity.setId(id);
+        entity.setUsername(username);
         return ResponseEntity.ok(service.save(entity));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (!service.findById(id).isPresent()) {
+    @DeleteMapping("/{username}")
+    public ResponseEntity<Void> delete(@PathVariable String username) {
+        if (!service.findByUsername(username).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        service.deleteById(id);
+        service.deleteByUsername(username);
         return ResponseEntity.noContent().build();
     }
 }   

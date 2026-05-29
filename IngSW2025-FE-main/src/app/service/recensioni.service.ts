@@ -20,7 +20,7 @@ export class RecensioniService {
     return this.http.get<Recensioni>(`${this.apiUrl}/${id}`);
   }
 
-  getByIsbn(isbn: number): Observable<Recensioni[]> {
+  getByIsbn(isbn: string): Observable<Recensioni[]> {
     return this.http.get<Recensioni[]>(`${this.apiUrl}/libro/${isbn}`);
   }
 

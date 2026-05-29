@@ -4,7 +4,7 @@ services:
     container_name: mysql_webapp
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: webapp
+      MYSQL_DATABASE: prova3
       MYSQL_USER: webappuser
       MYSQL_PASSWORD: webapppassword
     ports:

@@ -6,20 +6,20 @@ import jakarta.persistence.*;
 @Data
 @Entity
 @Table(name = "copia")
+@IdClass(CopiaId.class)
 public class Copia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_copia;
-
-    @Column(name = "isbn", length = 13)
     private String isbn;
+    @Id
     @Column(name = "id_biblioteca")
     private String idBiblioteca;
 
-    private String copie_presenti;
+    @Column(name = "num_copie_presenti")
+    private String copiePresenti;
 
-    private Boolean copie_disponibili;
+    @Column(name = "num_copie_disponibili")
+    private Boolean copieDisponibili;
 
     /*public boolean isDisponibile(String isbn, String id_biblioteca) {
         return copie_disponibili;

@@ -31,8 +31,8 @@ public class LibroController {
     */
 
     @GetMapping("/{isbn}")
-    public ResponseEntity<Libro> getById(@PathVariable Long isbn) {
-        Optional<Libro> entity = service.findById(isbn);
+    public ResponseEntity<Libro> getById(@PathVariable String isbn) {
+        Optional<Libro> entity = service.findByIsbn(isbn);
         return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -60,8 +60,8 @@ public class LibroController {
     }
 
     @PutMapping("/{isbn}")
-    public ResponseEntity<Libro> update(@PathVariable Long isbn, @RequestBody Libro entity) {
-        if (!service.findById(isbn).isPresent()) {
+    public ResponseEntity<Libro> update(@PathVariable String isbn, @RequestBody Libro entity) {
+        if (!service.findByIsbn(isbn).isPresent()) {
             return ResponseEntity.notFound().build();
         }
         entity.setIsbn(isbn);
@@ -69,11 +69,11 @@ public class LibroController {
     }
 
     @DeleteMapping("/{isbn}")
-    public ResponseEntity<Void> delete(@PathVariable Long isbn) {
-        if (!service.findById(isbn).isPresent()) {
+    public ResponseEntity<Void> delete(@PathVariable String isbn) {
+        if (!service.findByIsbn(isbn).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        service.deleteById(isbn);
+        service.deleteByIsbn(isbn);
         return ResponseEntity.noContent().build();
     }
 }   

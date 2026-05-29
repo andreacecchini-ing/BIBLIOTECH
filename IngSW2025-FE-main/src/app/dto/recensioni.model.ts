@@ -1,7 +1,6 @@
 export interface Recensioni {
-  id?: number;
-  username: string;
-  isbn: number;
+  isbn?: string|number;
+  username?: string;
   voto: number;
   commento: string;
   data: Date;

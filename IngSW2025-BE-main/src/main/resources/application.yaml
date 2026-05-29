@@ -1,8 +1,8 @@
 spring:
   application:
-    name: webapp
+    name: prova3
   datasource:
-    url: jdbc:mysql://localhost:3306/webapp
+    url: jdbc:mysql://localhost:3306/prova3
     username: webappuser
     password: webapppassword
     driver-class-name: com.mysql.cj.jdbc.Driver

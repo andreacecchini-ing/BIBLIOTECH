@@ -23,16 +23,16 @@ public class LibroService{
         return repository.findAll();
     }
 
-    public Optional<Libro> findById(Long isbn) {
-        return repository.findById(isbn);
+    public Optional<Libro> findByIsbn(String isbn) {
+        return repository.findByIsbn(isbn);
     }
 
     public Libro save(Libro entity) {
         return repository.save(entity);
     }
 
-    public void deleteById(Long isbn) {
-        repository.deleteById(isbn);
+    public void deleteByIsbn(String isbn) {
+        repository.deleteByIsbn(isbn);
     }
 
     public Page<Libro> findPaginati(int pagina, int dimensione) {

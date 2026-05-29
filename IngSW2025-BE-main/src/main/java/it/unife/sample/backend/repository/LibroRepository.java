@@ -11,9 +11,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;
+import java.util.Optional;
 
 @Repository
-public interface LibroRepository extends JpaRepository<Libro, Long> {
+public interface LibroRepository extends JpaRepository<Libro, Integer> {
+
+    Optional<Libro> findByIsbn(String isbn);
+    void deleteByIsbn(String isbn);
 
     @Query("SELECT l FROM Libro l WHERE :genere = '' OR l.genere = :genere")
     Page<Libro> findFiltratiOrdinati(@Param("genere") String genere, Pageable pageable);

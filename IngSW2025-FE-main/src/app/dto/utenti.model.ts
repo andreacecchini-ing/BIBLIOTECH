@@ -1,11 +1,12 @@
 export interface Utenti {
-  id?: number;
-  username: string;
+  username?: string;
+  email: string;
+  password?: string;
   nome: string;
   cognome: string;
-  email: string;
-  cellulare: string;
   indirizzo: string;
-  data_nascita: string;
-  password?: string;
+  cellulare: string;
+  dataNascita: string;
+  ruolo: string;
+  codiceBiblioteca?: string;
 }

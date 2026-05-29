@@ -16,6 +16,6 @@ public class CopiaService {
 
     public boolean isDisponibile(String isbn, String id_biblioteca) {
         Copia copia = repository.findByIsbnAndIdBiblioteca(isbn, id_biblioteca);
-        return (copia != null && copia.getCopie_disponibili());
+        return (copia != null && copia.getCopieDisponibili());
     }
 }

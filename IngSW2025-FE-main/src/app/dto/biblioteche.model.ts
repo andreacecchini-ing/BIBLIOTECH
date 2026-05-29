@@ -1,5 +1,5 @@
 export interface Biblioteche {
-  id_biblioteca?: string;
+  idBiblioteca?: string|number;
   nome: string;
   indirizzo: string;
   citta: string;

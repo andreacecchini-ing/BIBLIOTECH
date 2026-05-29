@@ -4,5 +4,5 @@ export interface Libri {
   autore: string;
   anno: string;
   genere: string;
-  trama: Text;
+  //trama: Text;
 }

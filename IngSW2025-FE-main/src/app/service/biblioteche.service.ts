@@ -16,7 +16,7 @@ export class BibliotecheService {
     return this.http.get<Biblioteche[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Biblioteche> {
+  getById(id: string): Observable<Biblioteche> {
     return this.http.get<Biblioteche>(`${this.apiUrl}/${id}`);
   }
 /*

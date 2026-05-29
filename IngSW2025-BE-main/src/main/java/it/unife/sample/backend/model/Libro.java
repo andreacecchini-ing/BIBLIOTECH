@@ -14,17 +14,20 @@ import lombok.Data;
 public class Libro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long isbn;
-    @Column(unique = true, nullable = false)
+    private String isbn;
+
+    @Column(nullable = false)
     private String titolo;
-    @Column(unique = true, nullable = false)
+
+    @Column(nullable = false)
     private String autore;
-    @Column(unique = true, nullable = false)
+
+    @Column(name="anno_pubblicazione")
     private String anno;
-    @Column(unique = true, nullable = false)
+
     private String genere;
-    @Column(unique = true, nullable = false, columnDefinition = "TEXT")
+
+    /*@Column(unique = true, nullable = false, columnDefinition = "TEXT")
     private String trama;
-    
+    */
 }

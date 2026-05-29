@@ -19,15 +19,15 @@ public class UtenteService{
         return repository.findAll();
     }
 
-    public Optional<Utente> findById(Long id) {
-        return repository.findById(id);
+    public Optional<Utente> findByUsername(String username) {
+        return repository.findByUsername(username);
     }
 
     public Utente save(Utente entity) {
         return repository.save(entity);
     }
 
-    public void deleteById(Long id) {
-        repository.deleteById(id);
+    public void deleteByUsername(String username) {
+        repository.deleteByUsername(username);
     }
 }

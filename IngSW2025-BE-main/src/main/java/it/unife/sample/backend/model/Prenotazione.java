@@ -7,19 +7,23 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "prenotazione")
+@IdClass(PrenotazioneId.class)
 public class Prenotazione {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_prenotazione;
-
+    private String isbn;
+    @Id
+    @Column(name = "id_biblioteca")
+    private String idBiblioteca;
+    @Id
     private String username;
 
-    private Integer id_copia;
+    @Column(name = "data_prenotazione")
+    private LocalDate dataPrenotazione;
 
-    private LocalDate data_prenotazione;
-    private LocalDate data_restituzione_prevista;
-    private LocalDate data_restituzione_effettiva;
+    @Column(name = "data_restituzione_prevista")
+    private LocalDate dataRestituzionePrevista;
 
-    private String stato;
+    @Column(name = "data_restituzione_effettiva")
+    private LocalDate dataRestituzioneEffettiva;
 }

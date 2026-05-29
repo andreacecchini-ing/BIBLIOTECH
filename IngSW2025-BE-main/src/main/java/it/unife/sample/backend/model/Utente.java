@@ -14,24 +14,33 @@ import lombok.Data;
 public class Utente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Long id; 
-
-    private String nome;
-    private String cognome;
     @Column(unique = true, nullable = false)
     private String username;
+
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(unique = true)
-    private String cellulare;
+
+
+    private String password;
+
+    private String nome;
+
+    private String cognome;
+
     @Column(unique = true)
     private String indirizzo;
-    private String data_nascita;
-    private String password;
+
+    @Column(name="telefono" )
+    private String cellulare;
+
+    @Column(name = "data_nascita")
+    private String dataNascita;
+    
     private String ruolo;
 
-    
+    @Column(name = "codice_biblioteca")
+    private String codiceBiblioteca;
+
     public String getEmail() {
         return email;
     }

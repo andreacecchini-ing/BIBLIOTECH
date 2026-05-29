@@ -10,9 +10,9 @@ import java.util.List;
 
 @Repository
 public interface RecensioneRepository extends JpaRepository<Recensione, Integer> {
-    List<Recensione> findByIsbn(Long isbn);
+    List<Recensione> findByIsbn(String isbn);
     @Query(value = "SELECT COALESCE(ROUND(AVG(voto)), 0) AS mediaValutazione, " +
                    "FROM recensioni WHERE libro_id = :libroId", 
            nativeQuery = true)
-    Integer getValutazioneMediaLibro(@Param("libroId") Long libroId);
+    Integer getValutazioneMediaLibro(@Param("libroId") String libroId);
 }

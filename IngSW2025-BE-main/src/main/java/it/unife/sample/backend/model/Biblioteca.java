@@ -9,10 +9,13 @@ import jakarta.persistence.*;
 public class Biblioteca {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id_biblioteca;
+    @Column(name = "id_biblioteca", unique = true, nullable = false)
+    private String idBiblioteca;
 
+    @Column(unique = true, nullable = false)
     private String nome;
+
     private String indirizzo;
+    
     private String citta;
 }

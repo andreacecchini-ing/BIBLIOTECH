@@ -69,7 +69,7 @@
           <div class="custom-select-wrapper">
             <select id="selectBiblioteca" (change)="onChangeFiltroBiblioteca($event)">
               <option value="">Tutte le biblioteche</option>
-              <option *ngFor="let bib of listaBiblioteche" [value]="bib.id_biblioteca">{{ bib.nome }}</option>
+              <option *ngFor="let bib of listaBiblioteche" [value]="bib.idBiblioteca">{{ bib.nome }}</option>
             </select>
           </div>
         </div>

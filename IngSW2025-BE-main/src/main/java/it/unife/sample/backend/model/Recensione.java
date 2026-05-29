@@ -7,21 +7,19 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "recensione")
+@IdClass(RecensioneId.class)
 public class Recensione {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_recensione;
-
+    private String isbn;
+    @Id
     private String username;
-
-    @Column(name = "ISBN", length = 13)
-    private Long isbn;
 
     private Integer voto;
 
     @Column(columnDefinition = "TEXT")
     private String commento;
-
-    private LocalDate data_recensione;
+    
+    @Column(name = "data_recensione")
+    private LocalDate dataRecensione;
 }

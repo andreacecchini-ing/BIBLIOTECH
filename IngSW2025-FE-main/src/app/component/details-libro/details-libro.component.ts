@@ -24,10 +24,10 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 })
 export class DetailsLibroComponent implements OnInit {
   libro?: Libri;
-  isbnLibro!: number;
+  isbnLibro!: string | number;
   recensioni: any[] = [];
   listaBiblioteche: Biblioteche[] = [];
-  bibliotecaSelezionata: number | null = null; // Memorizza l'ID della biblioteca
+  bibliotecaSelezionata: string | number | null = null; // Memorizza l'ID della biblioteca
   
   ruoloUtente: 'ospite' | 'utente' | 'bibliotecario' = 'ospite';
   verificaAccesso(){
@@ -66,7 +66,7 @@ export class DetailsLibroComponent implements OnInit {
     const idParam = this.route.snapshot.paramMap.get('id');
     
     if (idParam) {
-      this.isbnLibro = Number(idParam);
+      this.isbnLibro = String(idParam);
       this.caricaDettagliLibro(this.isbnLibro);
       this.caricaRecensioniLibro(this.isbnLibro);
     } else {
@@ -90,15 +90,15 @@ export class DetailsLibroComponent implements OnInit {
 
   }
 
-  caricaDettagliLibro(isbn: number): void {
-    this.libriService.getById(isbn).subscribe({
+  caricaDettagliLibro(isbn: string | number): void {
+    this.libriService.getByIsbn(isbn.toString()).subscribe({
       next: (data) => this.libro = data,
       error: (err) => console.error(err)
     });
   }
 
-  caricaRecensioniLibro(isbn: number): void {
-    this.recensioniService.getByIsbn(isbn).subscribe({
+  caricaRecensioniLibro(isbn: string | number): void {
+    this.recensioniService.getByIsbn(isbn.toString()).subscribe({
       next: (data) => this.recensioni = data
     });
   }

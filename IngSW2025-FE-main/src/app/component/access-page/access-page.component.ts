@@ -68,10 +68,10 @@ export class AccessPageComponent {
   cellulare: '', 
   indirizzo: '', 
   data_nascita: '', 
-  ruolo: ''
+  ruolo: '',
+  codiceBiblioteca: ''
   };
 
-  codiceBiblioteca: string = '';
 
   utenteLoggato: Utenti | null = null;
   
@@ -92,18 +92,18 @@ export class AccessPageComponent {
   }*/
   registrati() {
     console.log("Stato isBibliotecario:", this.isBibliotecario);
-    console.log("Codice inserito:", this.codiceBiblioteca);
+    console.log("Codice inserito:", this.nuovoUtente.codiceBiblioteca);
     console.log("Contenuto attuale di listaBiblioteche:", this.listaBiblioteche);
     
     const bibliotecaTrovate = this.listaBiblioteche.find(
-      b => String(b.id_biblioteca) === String(this.codiceBiblioteca)
+      b => String(b.idBiblioteca) === String(this.nuovoUtente.codiceBiblioteca)
     );
     
     console.log("Biblioteca trovata:", bibliotecaTrovate);
     
 
     const bibliotecaTrovata = this.listaBiblioteche.find(
-      b => String(b.id_biblioteca) === String(this.codiceBiblioteca)
+      b => String(b.idBiblioteca) === String(this.nuovoUtente.codiceBiblioteca)
     );
 
     console.log("Biblioteca trovata:", bibliotecaTrovata);
@@ -123,7 +123,7 @@ export class AccessPageComponent {
         if (this.isBibliotecario && bibliotecaTrovata) {
           this.gestioneService.save({
             username: res.username,
-            id_biblioteca: bibliotecaTrovata.id_biblioteca
+            id_biblioteca: bibliotecaTrovata.idBiblioteca
           }).subscribe({
             next: () => alert('Registrato come Bibliotecario con successo!'),
             error: (err) => alert('Errore nel salvataggio gestione: ' + err.message)

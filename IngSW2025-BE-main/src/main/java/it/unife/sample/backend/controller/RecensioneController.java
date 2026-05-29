@@ -24,7 +24,7 @@ public class RecensioneController {
     public Recensione create(@RequestBody Recensione b) { return service.save(b); }
 
     @GetMapping("/libro/{isbn}")
-    public ResponseEntity<List<Recensione>> getRecensioniByIsbn(@PathVariable Long isbn) {
+    public ResponseEntity<List<Recensione>> getRecensioniByIsbn(@PathVariable String isbn) {
         List<Recensione> recensioni = recensioneRepository.findByIsbn(isbn);
         return ResponseEntity.ok(recensioni);
     }
